@@ -20,7 +20,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CLIB) $@ $(LIBFT) $^
+	cp $(LIBFT) $@
+	$(CLIB) $@ $^
 
 %.o: %.c ft_printf.h Makefile
 	$(CC) -c $(FLAGS) -o $@ $<
