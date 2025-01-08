@@ -6,20 +6,22 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/08 12:22:14 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:10:41 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-#include "libft/libft.h"
-#include <stdbool.h>
-#include <stdlib.h>
+# define BLOCK_SIZE 4096
 
-#include <stdio.h> // TODO
-#include <string.h> // TODO
-#include <bsd/string.h> // TODO
+# include "libft/libft.h"
+# include <stdbool.h>
+# include <stdlib.h>
+
+# include <stdio.h> // TODO
+# include <string.h> // TODO
+# include <bsd/string.h> // TODO
 
 typedef struct s_conv_spec
 {

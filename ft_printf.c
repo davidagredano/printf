@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/08 12:49:39 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:15:18 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	ft_printf(char const *format, ...)
 {
-	printf("%s", format);
+	char *str;
+
+	str = (char *) ft_calloc(BLOCK_SIZE, sizeof(char));
+
+	ft_strlcpy(str, format, BLOCK_SIZE);
+	ft_putstr_fd(str, STDOUT_FILENO);
+	free(str);
 	return (1);
 }
