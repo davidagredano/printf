@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/08 09:41:58 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:22:14 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
+#include "libft/libft.h"
+#include <stdbool.h>
+#include <stdlib.h>
+
 #include <stdio.h> // TODO
 #include <string.h> // TODO
 #include <bsd/string.h> // TODO
-#include <stdbool.h>
-#include <stdlib.h>
 
 typedef struct s_conv_spec
 {
@@ -29,5 +31,7 @@ typedef struct s_conv_spec
 	size_t	field_width;
 	ssize_t	precision;
 }	t_conv_spec;
+
+int	ft_printf(char const *format, ...);
 
 #endif
