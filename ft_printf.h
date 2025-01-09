@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/08 13:10:41 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:59:02 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,12 @@ typedef struct s_conv_spec
 }	t_conv_spec;
 
 int	ft_printf(char const *format, ...);
+int	ft_print_int(int n); // for d, i
+//int	ft_print_uint(unsigned int n); // for u
+//int	ft_print_hex(unsigned int n); // for x, X
+//int	ft_print_char(char c); // for c
+//int	ft_print_str(const char *str); // for s
+//int	ft_print_ptr(void *ptr); // for p
+//int	ft_print_percent(void); // for %
 
 #endif
