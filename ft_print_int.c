@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/09 11:52:49 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:27:16 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ int	ft_print_int(int n)
 	if (!str)
 		return (-1);
 	
-	// print the string
-	ft_putstr_fd(str, STDOUT_FILENO);
-
-	// get the num of chars printed
-	ret = (int) ft_strlen(str);
+	// print the string and get the num of chars printed
+	ret = ft_putstr(str);
 
 	// free str
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:12:43 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/09 11:53:13 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:31:43 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ int	ft_print_uint(unsigned int n)
 		return (-1);
 	sprintf(str, "%u", n);
 	
-	// print the string
-	ft_putstr_fd(str, STDOUT_FILENO);
-
-	// get the num of chars printed
-	ret = (int) ft_strlen(str);
+	// print the string and get the num of chars printed
+	ret = ft_putstr(str);
 
 	// free str
 	free(str);
