@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:28:26 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:13:08 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,9 @@
 
 int	ft_print_char(int c)
 {
-	char	*str;
-	int		ret;
+	// print the char
+	ft_putchar_fd((unsigned char) c, 1);
 
-	// alloc the unsigned int as ascii
-	str = ft_calloc(2, sizeof(char)); 
-	if (!str)
-		return (-1);
-	str[0] = (unsigned char) c;
-
-	// print the string and get the num of chars printed
-	ret = ft_putstr(str);
-
-	// free str
-	free(str);
-
-	// return the number of chars printed
-	return (ret);
+	// return the number of chars printed (always 1)
+	return (1);
 }
