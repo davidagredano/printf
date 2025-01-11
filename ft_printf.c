@@ -6,11 +6,40 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:37:15 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:11:20 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
+
+static int	ft_print_format(char specifier, va_list ap);
+
+int	ft_printf(char const *str, ...)
+{
+	va_list	ap;
+	size_t	i;
+	int		chars_printed;
+
+	va_start(ap, str);
+	chars_printed = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			i++;
+			chars_printed += ft_print_format(str[i], ap);
+		}
+		else
+		{
+			ft_putchar_fd(str[i], STDOUT_FILENO);
+			chars_printed++;
+		}
+		i++;
+	}
+	va_end(ap);
+	return (chars_printed);
+}
 
 static int	ft_print_format(char specifier, va_list ap)
 {
@@ -31,34 +60,4 @@ static int	ft_print_format(char specifier, va_list ap)
 	else if (specifier == '%')
 		return (ft_print_percent());
 	return (0);
-}
-
-int	ft_printf(char const *format, ...)
-{
-	char	*str;
-	va_list	ap;
-	size_t	i;
-	int		ret;
-
-	str = (char *) ft_calloc(BLOCK_SIZE, sizeof(char));
-	va_start(ap, format);
-	ret = 0;
-	i = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			ret += ft_print_format(format[i], ap);
-		}
-		else
-		{
-			ft_putchar_fd(format[i], STDOUT_FILENO);
-			ret++;
-		}
-		i++;
-	}
-	free(str);
-	va_end(ap);
-	return (ret);
 }
