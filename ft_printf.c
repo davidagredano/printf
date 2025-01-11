@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/11 13:11:20 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:30:36 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static int	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 'u')
 		return (ft_print_uint(va_arg(ap, unsigned int)));
 	else if (specifier == 'x')
-		return (ft_print_hex(va_arg(ap, unsigned int), false));
+		return (ft_print_hex(va_arg(ap, unsigned int)));
 	else if (specifier == 'X')
-		return (ft_print_hex(va_arg(ap, unsigned int), true));
+		return (ft_print_hex(va_arg(ap, unsigned int)));
 	else if (specifier == 'c')
 		return (ft_print_char(va_arg(ap, int)));
 	else if (specifier == 's')
