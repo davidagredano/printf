@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:12:43 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:31:43 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/11 19:09:10 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,12 @@
 int	ft_print_uint(unsigned int n)
 {
 	char	*str;
-	int		ret;
-	
-	// alloc the uitoa
-	str = ft_calloc(16, sizeof(char)); 
+	int		chars_printed;
+
+	str = ft_uitoa(n);
 	if (!str)
-		return (-1);
-	sprintf(str, "%u", n);
-	
-	// print the string and get the num of chars printed
-	ret = ft_putstr(str);
-
-	// free str
+		return (0);
+	chars_printed = ft_putstr(str);
 	free(str);
-
-	// return the number of chars printed
-	return (ret);
+	return (chars_printed);
 }
