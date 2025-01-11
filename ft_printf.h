@@ -6,12 +6,12 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/11 20:28:14 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:55:59 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "libft/libft.h"
 # include <stdarg.h>
@@ -37,6 +37,6 @@ int	ft_print_char(int c);
 int	ft_print_str(const char *s);
 int	ft_print_percent(void);
 
-int	ft_putstr(char *);
+int	ft_putstr(char *str);
 
 #endif
