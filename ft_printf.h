@@ -6,22 +6,16 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 09:55:56 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:04:25 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-# define BLOCK_SIZE 4096
-
 # include "libft/libft.h"
+# include <stdarg.h>
 # include <stdbool.h>
-# include <stdlib.h>
-
-# include <stdio.h> // TODO
-# include <string.h> // TODO
-# include <bsd/string.h> // TODO
 
 typedef struct s_conv_spec
 {
@@ -35,13 +29,13 @@ typedef struct s_conv_spec
 }	t_conv_spec;
 
 int	ft_printf(char const *format, ...);
-int	ft_print_int(int n); // for d, i
-int	ft_print_uint(unsigned int n); // for u
-int	ft_print_hex(unsigned int n, bool upper); // for x, X
-int	ft_print_ptr(void *ptr); // for p
-int	ft_print_char(int c); // for c
-int	ft_print_str(const char *s); // for s
-int	ft_print_percent(void); // for %
+int	ft_print_int(int n);
+int	ft_print_uint(unsigned int n);
+int	ft_print_hex(unsigned int n, bool upper);
+int	ft_print_ptr(void *ptr);
+int	ft_print_char(int c);
+int	ft_print_str(const char *s);
+int	ft_print_percent(void);
 
 int	ft_putstr(char *);
 
