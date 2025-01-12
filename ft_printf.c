@@ -6,13 +6,14 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 11:38:30 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:52:24 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
 static int	ft_print_format(char specifier, va_list ap);
+static bool	ft_isvalid(char specifier);
 
 int	ft_printf(char const *str, ...)
 {
@@ -25,7 +26,7 @@ int	ft_printf(char const *str, ...)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && ft_isvalid(str[i + 1]))
 		{
 			i++;
 			chars_printed += ft_print_format(str[i], ap);
@@ -39,6 +40,13 @@ int	ft_printf(char const *str, ...)
 	}
 	va_end(ap);
 	return (chars_printed);
+}
+
+static bool	ft_isvalid(char specifier)
+{
+	if (ft_strchr(CONVERSION_SPECIFIERS, specifier))
+		return (true);
+	return (false);
 }
 
 static int	ft_print_format(char specifier, va_list ap)

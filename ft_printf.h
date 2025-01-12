@@ -6,12 +6,14 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 15:17:45 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:42:07 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
+# define CONVERSION_SPECIFIERS "cspdiuxX%"
 
 # include "libft/libft.h"
 # include <stdarg.h>
