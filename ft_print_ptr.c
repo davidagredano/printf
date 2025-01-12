@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:30:23 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:46:19 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,22 @@
 int	ft_print_ptr(void *ptr)
 {
 	char	*str;
+	char	*nbr;
 	int		ret;
 
-	// alloc the pointer as hexadecimal ascii
-	str = ft_calloc(32, sizeof(char)); 
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	nbr = ft_ultoa((unsigned long) ptr, 16);
+	if (!nbr)
+		return (0);
+	str = ft_strjoin("0x", nbr);
 	if (!str)
-		return (-1);
-	sprintf(str, "%p", ptr);
-
-	// print the string and get the num of chars printed
+	{
+		free(nbr);
+		return (0);
+	}
 	ret = ft_putstr(str);
-
-	// free str
+	free(nbr);
 	free(str);
-
-	// return the number of chars printed
 	return (ret);
 }
