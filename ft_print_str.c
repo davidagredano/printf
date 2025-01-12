@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:31:21 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:26:26 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,7 @@
 
 int	ft_print_str(const char *s)
 {
-	char	*str;
-	int		ret;
-
-	// alloc the string 
-	if (!s)
-		str = ft_calloc(7, sizeof(char)); // should output "(null)"
-	else
-		str = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (!str)
-		return (-1);
-	sprintf(str, "%s", s);
-
-	// print the string and get the num of chars printed
-	ret = ft_putstr(str);
-
-	// free str
-	free(str);
-
-	// return the number of chars printed
-	return (ret);
+	if (s)
+		return (ft_putstr(s));
+	return (ft_putstr("(null)"));
 }
