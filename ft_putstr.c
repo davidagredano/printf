@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:33:53 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/11 12:59:33 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 11:35:43 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
 
 int	ft_putstr(char *str)
 {
-	int	i;
-
 	if (!str)
 		return (0);
-	i = (int) ft_strlen(str);
-	write(STDOUT_FILENO, str, i);
-	return (i);
+	return ((int) write(STDOUT_FILENO, str, ft_strlen(str)));
 }
