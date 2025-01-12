@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 11:38:44 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:17:45 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	ft_print_char(int c);
 int	ft_print_str(const char *s);
 int	ft_print_percent(void);
 
-int	ft_putstr(char *str);
+int	ft_putstr(const char *str);
 
 #endif
