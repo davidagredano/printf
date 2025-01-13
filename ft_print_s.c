@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 13:46:19 by dagredan         ###   ########.fr       */
+/*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
+/*   Updated: 2025/01/13 14:25:29 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(void *ptr)
+int	ft_print_s(const char *s)
 {
-	char	*str;
-	char	*nbr;
-	int		ret;
-
-	if (!ptr)
-		return (ft_putstr("(nil)"));
-	nbr = ft_ultoa((unsigned long) ptr, 16);
-	if (!nbr)
-		return (0);
-	str = ft_strjoin("0x", nbr);
-	if (!str)
-	{
-		free(nbr);
-		return (0);
-	}
-	ret = ft_putstr(str);
-	free(nbr);
-	free(str);
-	return (ret);
+	if (s)
+		return (ft_putstr(s));
+	return (ft_putstr("(null)"));
 }

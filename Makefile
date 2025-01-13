@@ -1,6 +1,6 @@
-SRCS = ft_printf.c ft_print_int.c ft_print_uint.c ft_print_hex.c \
-       ft_print_hex_caps.c ft_print_ptr.c ft_print_char.c ft_print_str.c \
-	   ft_print_percent.c ft_putstr.c
+SRCS = ft_printf.c ft_print_c.c ft_print_s.c ft_print_p.c ft_print_di.c \
+       ft_print_u.c ft_print_x.c ft_print_x_caps.c ft_print_percent.c \
+       ft_putstr.c
 
 OBJS = $(SRCS:.c=.o)
 

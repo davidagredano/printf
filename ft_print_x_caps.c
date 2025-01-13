@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_X.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
+/*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/11 13:20:10 by dagredan         ###   ########.fr       */
+/*   Created: 2025/01/12 11:43:16 by dagredan          #+#    #+#             */
+/*   Updated: 2025/01/13 14:23:50 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_int(int n)
+int	ft_print_x_caps(unsigned int n)
 {
 	char	*str;
 	int		chars_printed;
 
-	str = ft_itoa(n);
+	str = ft_uitoa_caps(n, 16);
 	if (!str)
 		return (0);
 	chars_printed = ft_putstr(str);

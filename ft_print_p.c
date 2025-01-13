@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex_caps.c                                :+:      :+:    :+:   */
+/*   ft_print_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 11:43:16 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 12:19:51 by dagredan         ###   ########.fr       */
+/*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
+/*   Updated: 2025/01/13 14:27:52 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_hex_caps(unsigned int n)
+int	ft_print_p(void *ptr)
 {
 	char	*str;
-	int		chars_printed;
+	char	*nbr;
+	int		ret;
 
-	str = ft_uitoa_caps(n, 16);
-	if (!str)
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	nbr = ft_ultoa((unsigned long) ptr, 16);
+	if (!nbr)
 		return (0);
-	chars_printed = ft_putstr(str);
+	str = ft_strjoin("0x", nbr);
+	if (!str)
+	{
+		free(nbr);
+		return (0);
+	}
+	ret = ft_putstr(str);
+	free(nbr);
 	free(str);
-	return (chars_printed);
+	return (ret);
 }

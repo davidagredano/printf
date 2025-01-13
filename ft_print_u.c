@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:12:43 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/11 20:19:54 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:25:38 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_uint(unsigned int n)
+int	ft_print_u(unsigned int n)
 {
 	char	*str;
 	int		chars_printed;

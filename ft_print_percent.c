@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:58:24 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/12 16:25:18 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:33:02 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_print_percent(void)
 {
-	return (ft_print_char('%'));
+	return (ft_print_c('%'));
 }
