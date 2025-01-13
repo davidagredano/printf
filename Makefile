@@ -48,14 +48,15 @@ bonus: $(LIBFT) $(OBJS_BONUS)
 	cp $(LIBFT) $(NAME)
 	$(CLIB) $(NAME) $^
 	make mclean
+	@touch bonus
 
 mclean:
 	$(RM) $(OBJS)
 
 bclean:
-	$(RM) $(OBJS_BONUS)
+	$(RM) $(OBJS_BONUS) bonus
 
 lclean:
 	make clean -C $(LIBFT_DIR)
 
-.PHONY: all clean fclean re bonus mclean bclean
+.PHONY: all clean fclean re mclean bclean
