@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 14:29:00 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:49:05 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ int	ft_print_u(unsigned int n);
 int	ft_print_x(unsigned int n);
 int	ft_print_x_caps(unsigned int n);
 int	ft_print_percent(void);
-
-int	ft_putstr(const char *str);
 
 #endif
