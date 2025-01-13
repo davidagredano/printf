@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 14:30:08 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:46:20 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
 static bool	ft_isvalid(char specifier);
-static int	ft_print_format(char specifier, va_list ap);
+static int	ft_print_format(t_spec *spec, va_list ap);
+
+/*
+#include <stdio.h>
+void	ft_debug_format_specification(t_spec *spec)
+{
+	printf("\e[33m");
+	printf("specifier: %c\n", spec->specifier);
+	printf("\e[0m");
+}
+*/
 
 int	ft_printf(char const *str, ...)
 {
 	va_list	ap;
+	t_spec	*spec;
 	size_t	i;
 	int		chars_printed;
 
+	spec = ft_calloc(1, sizeof(t_spec));
+	if (!spec)
+		return (0);
 	va_start(ap, str);
 	chars_printed = 0;
 	i = 0;
@@ -28,8 +42,8 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%' && ft_isvalid(str[i + 1]))
 		{
-			i++;
-			chars_printed += ft_print_format(str[i], ap);
+			spec->specifier = str[++i];
+			chars_printed += ft_print_format(spec, ap);
 		}
 		else
 		{
@@ -49,23 +63,23 @@ static bool	ft_isvalid(char specifier)
 	return (false);
 }
 
-static int	ft_print_format(char specifier, va_list ap)
+static int	ft_print_format(t_spec *spec, va_list ap)
 {
-	if (specifier == 'c')
+	if (spec->specifier == 'c')
 		return (ft_print_c(va_arg(ap, int)));
-	else if (specifier == 's')
+	else if (spec->specifier == 's')
 		return (ft_print_s(va_arg(ap, const char *)));
-	else if (specifier == 'p')
+	else if (spec->specifier == 'p')
 		return (ft_print_p(va_arg(ap, void *)));
-	else if (specifier == 'd' || specifier == 'i')
+	else if (spec->specifier == 'd' || spec->specifier == 'i')
 		return (ft_print_di(va_arg(ap, int)));
-	else if (specifier == 'u')
+	else if (spec->specifier == 'u')
 		return (ft_print_u(va_arg(ap, unsigned int)));
-	else if (specifier == 'x')
+	else if (spec->specifier == 'x')
 		return (ft_print_x(va_arg(ap, unsigned int)));
-	else if (specifier == 'X')
+	else if (spec->specifier == 'X')
 		return (ft_print_x_caps(va_arg(ap, unsigned int)));
-	else if (specifier == '%')
+	else if (spec->specifier == '%')
 		return (ft_print_percent());
 	return (0);
 }

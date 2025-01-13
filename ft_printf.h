@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 15:49:05 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:47:26 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
-typedef struct s_conv_spec
+// Conversion specification
+typedef struct s_spec
 {
 	bool	alternative_form;
 	bool	zero_padding;
@@ -28,7 +29,8 @@ typedef struct s_conv_spec
 	bool	leading_sign;
 	size_t	field_width;
 	ssize_t	precision;
-}	t_conv_spec;
+	char	specifier;
+}	t_spec;
 
 int	ft_printf(char const *str, ...);
 int	ft_print_c(int c);
