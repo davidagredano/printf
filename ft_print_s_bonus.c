@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str_bonus.c                               :+:      :+:    :+:   */
+/*   ft_print_s_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 15:01:25 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:59:38 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_print_s(const char *s)
+{
+	if (s)
+		return (ft_putstr(s));
+	return (ft_putstr("(null)"));
+}
+
+/*
 int	ft_print_str(const char *s)
 {
 	char	*str;
@@ -35,13 +43,13 @@ int	ft_print_str(const char *s)
 	// return the number of chars printed
 	return (ret);
 }
+ */
 
 /*
  * The int argument is converted to an unsigned char, and the resulting
  * character is written.
  * Flags admitted: '-' left justification, field width.
- */
-char	*printf_s(/*t_conv_spec *spec*/ bool left_align, size_t field_width, ssize_t precision, char *s)
+char	*printf_s(t_conv_spec *spec bool left_align, size_t field_width, ssize_t precision, char *s)
 {
 	char	*str;
 	ssize_t	i;
@@ -84,11 +92,11 @@ char	*printf_s(/*t_conv_spec *spec*/ bool left_align, size_t field_width, ssize_
 
 	return (str);
 }
+ */
 
 /*
  * Tests for the conversion specifier '%s'.
  * Flags admitted: '-' left justification, field width, '.' precision.
- */
 void	s_tests(void)
 {
 	char *s = "Hello";
@@ -122,8 +130,4 @@ void	s_tests(void)
 	printf("|%3.10s|\n", s);
 	printf("|%s|\n", printf_s(false, 3, 10, s));
 }
-
-int	main(void)
-{
-	s_tests();
-}
+ */

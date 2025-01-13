@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char_bonus.c                              :+:      :+:    :+:   */
+/*   ft_print_c_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 14:59:00 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:58:21 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(int c)
+int	ft_print_c(int c)
 {
-	// print the char
-	ft_putchar_fd((unsigned char) c, 1);
-
-	// return the number of chars printed (always 1)
-	return (1);
+	return ((int) write(STDOUT_FILENO, &c, 1));
 }
 
 /*
  * The int argument is converted to an unsigned char, and the resulting
  * character is written.
  * Flags admitted: '-' left justification, field width.
- */
-char	*printf_c(/*t_conv_spec *spec*/ size_t field_width, bool left_align, int c)
+char	*printf_c(t_conv_spec *spec size_t field_width, bool left_align, int c)
 {
 	char	*str;
 	size_t	size;
@@ -50,11 +45,11 @@ char	*printf_c(/*t_conv_spec *spec*/ size_t field_width, bool left_align, int c)
 
 	return (str);
 }
+*/
 
 /*
  * Tests for the conversion specifier '%c'.
  * Flags admitted: '-' left justification, field width.
- */
 void	c_tests(void)
 {
 	char c = 'A';
@@ -87,13 +82,5 @@ void	c_tests(void)
 	printf("|%--5c|\n", c);
 	printf("%%---5c, c // Repeated flags (ignored)\n");
 	printf("|%--5c|\n", c);
-	printf("%%c%%c, c // -Wformat-insufficient-args (ignored)\n");
-	printf("|%c%c|\n", c);
-	printf("%%c, c, c // -Wextra-args (ignored)\n");
-	printf("|%c| \n", c, c);
 }
-
-int	main(void)
-{
-	c_tests();
-}
+*/

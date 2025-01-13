@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_p_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:27:16 by dagredan         ###   ########.fr       */
+/*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
+/*   Updated: 2025/01/13 14:50:36 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_int(int n)
+int	ft_print_p(void *ptr)
 {
 	char	*str;
+	char	*nbr;
 	int		ret;
-	
-	// alloc the itoa
-	str = ft_itoa(n);
+
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	nbr = ft_ultoa((unsigned long) ptr, 16);
+	if (!nbr)
+		return (0);
+	str = ft_strjoin("0x", nbr);
 	if (!str)
-		return (-1);
-	
-	// print the string and get the num of chars printed
+	{
+		free(nbr);
+		return (0);
+	}
 	ret = ft_putstr(str);
-
-	// free str
+	free(nbr);
 	free(str);
-
-	// return the number of chars printed
 	return (ret);
 }

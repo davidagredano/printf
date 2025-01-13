@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_x_caps_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
+/*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/10 10:30:23 by dagredan         ###   ########.fr       */
+/*   Created: 2025/01/12 11:43:16 by dagredan          #+#    #+#             */
+/*   Updated: 2025/01/13 14:23:50 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(void *ptr)
+int	ft_print_x_caps(unsigned int n)
 {
 	char	*str;
-	int		ret;
+	int		chars_printed;
 
-	// alloc the pointer as hexadecimal ascii
-	str = ft_calloc(32, sizeof(char)); 
+	str = ft_uitoa_caps(n, 16);
 	if (!str)
-		return (-1);
-	sprintf(str, "%p", ptr);
-
-	// print the string and get the num of chars printed
-	ret = ft_putstr(str);
-
-	// free str
+		return (0);
+	chars_printed = ft_putstr(str);
 	free(str);
-
-	// return the number of chars printed
-	return (ret);
+	return (chars_printed);
 }
