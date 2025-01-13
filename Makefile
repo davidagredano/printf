@@ -3,6 +3,13 @@ SRCS = ft_printf.c ft_print_c.c ft_print_s.c ft_print_p.c ft_print_di.c \
 
 OBJS = $(SRCS:.c=.o)
 
+SRCS_BONUS = ft_printf_bonus.c ft_print_c_bonus.c ft_print_s_bonus.c \
+             ft_print_p_bonus.c ft_print_di_bonus.c ft_print_u_bonus.c \
+             ft_print_x_bonus.c ft_print_x_caps_bonus.c \
+             ft_print_percent_bonus.c
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 NAME = libftprintf.a
 
 LIBFT_DIR = libft
@@ -11,7 +18,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 CC = cc
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 CLIB = ar rcs
 
@@ -19,22 +26,36 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
+$(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $@
-	$(CLIB) $@ $^
+	$(CLIB) $@ $(OBJS)
+	make bclean
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 %.o: %.c ft_printf.h Makefile
-	$(CC) -c $(FLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $<
 
-clean:
-	make clean -C $(LIBFT_DIR)
-	$(RM) $(OBJS)
+clean: mclean bclean lclean
 
 fclean: clean
-	$(RM) $(LIBFT)
-	$(RM) $(NAME)
+	$(RM) $(LIBFT) $(NAME)
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+bonus: $(LIBFT) $(OBJS_BONUS)
+	cp $(LIBFT) $(NAME)
+	$(CLIB) $(NAME) $^
+	make mclean
+
+mclean:
+	$(RM) $(OBJS)
+
+bclean:
+	$(RM) $(OBJS_BONUS)
+
+lclean:
+	make clean -C $(LIBFT_DIR)
+
+.PHONY: all clean fclean re bonus mclean bclean
