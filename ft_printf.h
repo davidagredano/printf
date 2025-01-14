@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/14 14:25:55 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:37:39 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		ft_print_x_caps(unsigned int n);
 int		ft_print_percent(void);
 
 int		ft_print_c_bonus(int c, t_spec *spec);
+int		ft_print_s_bonus(const char *s, t_spec *spec);
 int		ft_print_percent_bonus(void);
 
 #endif

@@ -6,128 +6,99 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 14:59:38 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:16:07 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_s(const char *s)
-{
-	if (s)
-		return (ft_putstr(s));
-	return (ft_putstr("(null)"));
-}
+static void	ft_validate_precision(const char *s, t_spec *spec);
+static void	ft_validate_field_width(t_spec *spec);
+static char	*ft_get_base_str(t_spec *spec);
+static void	ft_insert_str(char *dst, const char *src, t_spec *spec);
 
-/*
-int	ft_print_str(const char *s)
-{
-	char	*str;
-	int		ret;
-
-	// alloc the string 
-	if (!s)
-		str = ft_calloc(7, sizeof(char)); // should output "(null)"
-	else
-		str = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (!str)
-		return (-1);
-	sprintf(str, "%s", s);
-
-	// print the string and get the num of chars printed
-	ret = ft_putstr(str);
-
-	// free str
-	free(str);
-
-	// return the number of chars printed
-	return (ret);
-}
+/**
+ * The characters of the string are written up to the NUL byte;
+ * if a precision is specified, no more than the number specified are written.
+ * Flags admitted: left justification, field width, precision.
  */
-
-/*
- * The int argument is converted to an unsigned char, and the resulting
- * character is written.
- * Flags admitted: '-' left justification, field width.
-char	*printf_s(t_conv_spec *spec bool left_align, size_t field_width, ssize_t precision, char *s)
+int	ft_print_s_bonus(const char *s, t_spec *spec)
 {
 	char	*str;
-	ssize_t	i;
+	int		chars_printed;
 
-	// if no precision specified, precision = length of s
-	if (precision == -1)
-		precision = strlen(s); // ft_strlen
+	if (!s)
+		s = "(null)";
+	ft_validate_precision(s, spec);
+	ft_validate_field_width(spec);
+	str = ft_get_base_str(spec);
+	if (!str)
+		return (0);
+	ft_insert_str(str, s, spec);
+	chars_printed = ft_putstr(str);
+	free(str);
+	return (chars_printed);
+}
 
-	// if no field_width specified, field_width = precision
-	if (field_width < precision)
-		field_width = precision;
+/**
+ * To comply with the spec:
+ * If a precision is given, no NUL byte needs to be present;
+ * if the precision is not specified, or is greater than the size of the string,
+ * the string must contain a terminating NUL byte
+ */
+static void	ft_validate_precision(const char *s, t_spec *spec)
+{
+	if (spec->precision >= 0)
+		spec->precision = ft_strnlen(s, spec->precision);
+	else
+		spec->precision = ft_strlen(s);
+}
 
-	// malloc field_width bytes
-	str = calloc(field_width + 1, sizeof(char)); // ft_calloc
+/**
+ * Ensures that the field width won't cause truncation of the resulting string,
+ * expanding its size to the number of characters that will be written.
+ */
+static void	ft_validate_field_width(t_spec *spec)
+{
+	if (spec->field_width < spec->precision)
+		spec->field_width = spec->precision;
+}
+
+/**
+ * Allocates a string of the appropriate size.
+ * Initializes all characters to ' ' except for the terminating NUL character.
+ * Returns a pointer to the allocated string, or NULL if allocation fails.
+ */
+static char	*ft_get_base_str(t_spec *spec)
+{
+	char	*str;
+
+	str = ft_calloc(spec->field_width + 1, sizeof(char));
 	if (!str)
 		return (NULL);
-	memset(str, ' ', field_width); // ft_memset
-
-	// copy s in memory
-	// if left align: start copying s from i==0 to i==precision
-	if (left_align)
-	{
-		i = 0;	
-		while (i < precision)
-		{
-			str[i] = s[i];
-			i++;
-		}
-	}
-	// if not left align: copy right to left prom i==precision to i==0
-	else
-	{
-		i = 0;
-		while (i < precision)
-		{
-			str[field_width - 1 - i] = s[precision - 1 - i];
-			i++;
-		}
-	}
-
+	ft_memset(str, ' ', spec->field_width);
 	return (str);
 }
- */
 
-/*
- * Tests for the conversion specifier '%s'.
- * Flags admitted: '-' left justification, field width, '.' precision.
-void	s_tests(void)
+/**
+ * Copies the string src, properly aligned, to the buffer pointed to by dst.
+ */
+static void	ft_insert_str(char *dst, const char *src, t_spec *spec)
 {
-	char *s = "Hello";
-	printf("-Tests for conversion specifier %%s:\n\n");
+	int	i;
 
-	printf("%%s, s // No arguments\n");
-	printf("|%s|\n", s);
-	printf("|%s|\n", printf_s(false, 0, -1, s));
-
-	printf("%%10s, s // Field width\n");
-	printf("|%10s|\n", s);
-	printf("|%s|\n", printf_s(false, 10, -1, s));
-
-	printf("%%-s, s // Left justification\n");
-	printf("|%-s|\n", s);
-	printf("|%s|\n", printf_s(true, 0, -1, s));
-
-	printf("%%-10s, s // Left justification + Field width\n");
-	printf("|%-10s|\n", s);
-	printf("|%s|\n", printf_s(true, 10, -1, s));
-
-	printf("%%9.4s, s // Field width > Precision\n");
-	printf("|%9.4s|\n", s);
-	printf("|%s|\n", printf_s(false, 9, 4, s));
-
-	printf("%%-10.3s, s // Left justification + Field width > Precision\n");
-	printf("|%-10.3s|\n", s);
-	printf("|%s|\n", printf_s(true, 10, 3, s));
-
-	printf("%%3.10s, s // Field width < Precision\n");
-	printf("|%3.10s|\n", s);
-	printf("|%s|\n", printf_s(false, 3, 10, s));
+	i = 0;
+	if (spec->left_align)
+	{
+		while (i < spec->precision)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	}
+	else
+	{
+		i = spec->field_width - spec->precision;
+		ft_strlcpy(dst + i, src, spec->precision + 1);
+	}
 }
- */
