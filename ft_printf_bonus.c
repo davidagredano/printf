@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/14 10:12:00 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:03:44 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(char const *str, ...)
 static int	ft_print_format(t_spec *spec, va_list ap)
 {
 	if (spec->specifier == 'c')
-		return (ft_print_c(va_arg(ap, int)));
+		return (ft_print_c_bonus(va_arg(ap, int), spec));
 	else if (spec->specifier == 's')
 		return (ft_print_s(va_arg(ap, const char *)));
 	else if (spec->specifier == 'p')
@@ -63,6 +63,6 @@ static int	ft_print_format(t_spec *spec, va_list ap)
 	else if (spec->specifier == 'X')
 		return (ft_print_x_caps(va_arg(ap, unsigned int)));
 	else if (spec->specifier == '%')
-		return (ft_print_percent());
+		return (ft_print_percent_bonus());
 	return (0);
 }
