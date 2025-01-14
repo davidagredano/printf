@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 18:47:26 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:20:04 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # define CONVERSION_SPECIFIERS "cspdiuxX%"
+# define FLAGS "#0- +"
 
 # include "libft/libft.h"
 # include <stdarg.h>
@@ -30,16 +31,19 @@ typedef struct s_spec
 	size_t	field_width;
 	ssize_t	precision;
 	char	specifier;
-}	t_spec;
+}		t_spec;
 
-int	ft_printf(char const *str, ...);
-int	ft_print_c(int c);
-int	ft_print_s(const char *s);
-int	ft_print_p(void *ptr);
-int	ft_print_di(int n);
-int	ft_print_u(unsigned int n);
-int	ft_print_x(unsigned int n);
-int	ft_print_x_caps(unsigned int n);
-int	ft_print_percent(void);
+// Specification parser
+bool	ft_isvalid(const char *specification);
+
+int		ft_printf(char const *str, ...);
+int		ft_print_c(int c);
+int		ft_print_s(const char *s);
+int		ft_print_p(void *ptr);
+int		ft_print_di(int n);
+int		ft_print_u(unsigned int n);
+int		ft_print_x(unsigned int n);
+int		ft_print_x_caps(unsigned int n);
+int		ft_print_percent(void);
 
 #endif

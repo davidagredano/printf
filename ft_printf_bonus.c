@@ -6,13 +6,12 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 19:46:20 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:19:05 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
-static bool	ft_isvalid(char specifier);
 static int	ft_print_format(t_spec *spec, va_list ap);
 
 /*
@@ -40,7 +39,7 @@ int	ft_printf(char const *str, ...)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '%' && ft_isvalid(str[i + 1]))
+		if (str[i] == '%' && ft_isvalid(&str[i + 1]))
 		{
 			spec->specifier = str[++i];
 			chars_printed += ft_print_format(spec, ap);
@@ -54,13 +53,6 @@ int	ft_printf(char const *str, ...)
 	}
 	va_end(ap);
 	return (chars_printed);
-}
-
-static bool	ft_isvalid(char specifier)
-{
-	if (ft_strchr(CONVERSION_SPECIFIERS, specifier))
-		return (true);
-	return (false);
 }
 
 static int	ft_print_format(t_spec *spec, va_list ap)
