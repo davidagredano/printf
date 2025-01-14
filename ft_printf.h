@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 20:20:04 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:07:21 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ typedef struct s_spec
 	bool	left_align;
 	bool	leading_blank;
 	bool	leading_sign;
-	size_t	field_width;
-	ssize_t	precision;
+	int		field_width;
+	int		precision;
 	char	specifier;
 }		t_spec;
 
 // Specification parser
-bool	ft_isvalid(const char *specification);
+bool	ft_isvalid(const char *spec_str);
+int		ft_parse(const char *spec_str, t_spec *spec);
 
 int		ft_printf(char const *str, ...);
 int		ft_print_c(int c);

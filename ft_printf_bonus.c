@@ -6,23 +6,13 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 20:19:05 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:12:00 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h" 
 
 static int	ft_print_format(t_spec *spec, va_list ap);
-
-/*
-#include <stdio.h>
-void	ft_debug_format_specification(t_spec *spec)
-{
-	printf("\e[33m");
-	printf("specifier: %c\n", spec->specifier);
-	printf("\e[0m");
-}
-*/
 
 int	ft_printf(char const *str, ...)
 {
@@ -41,7 +31,7 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%' && ft_isvalid(&str[i + 1]))
 		{
-			spec->specifier = str[++i];
+			i += 1 + ft_parse(&str[i + 1], spec);
 			chars_printed += ft_print_format(spec, ap);
 		}
 		else
@@ -52,6 +42,7 @@ int	ft_printf(char const *str, ...)
 		i++;
 	}
 	va_end(ap);
+	free(spec);
 	return (chars_printed);
 }
 
