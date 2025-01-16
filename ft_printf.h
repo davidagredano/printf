@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 11:16:51 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:01:27 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int		ft_print_c(int c);
 int		ft_print_s(const char *s);
 int		ft_print_p(void *ptr);
 int		ft_print_di(int n);
-int		ft_print_u(unsigned int n);
-int		ft_print_x(unsigned int n);
-int		ft_print_x_caps(unsigned int n);
+int		ft_print_uint(unsigned int n, char specifier);
 int		ft_print_percent(void);
 
 int		ft_print_c_bonus(int c, t_spec *spec);
