@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 09:33:33 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:08:22 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_print_format(t_spec *spec, va_list ap)
 	else if (spec->specifier == 's')
 		return (ft_print_s_bonus(va_arg(ap, const char *), spec));
 	else if (spec->specifier == 'p')
-		return (ft_print_p(va_arg(ap, void *)));
+		return (ft_print_p_bonus(va_arg(ap, void *), spec));
 	else if (spec->specifier == 'd' || spec->specifier == 'i')
 		return (ft_print_di(va_arg(ap, int)));
 	else if (spec->specifier == 'u')
