@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 09:27:44 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/16 09:59:34 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	ft_print_x_bonus(unsigned int n, t_spec *spec)
 	char	*digits;
 	int		chars_printed;
 
-	digits = ft_uitoa(n, 16);
+	if (spec->specifier == 'x')
+		digits = ft_uitoa(n, 16);
+	if (spec->specifier == 'X')
+		digits = ft_uitoa_caps(n, 16);
 	if (!digits)
 		return (0);
 	ft_validate_spec(digits, spec);
@@ -106,9 +109,9 @@ static void	ft_insert_digits(char *dst, const char *src, t_spec *spec)
 
 /**
  * Copies the src string, from left to right, to the buffer pointed to by dst.
- * Prepends the string "0x" to src if the alternative form flag is present,
- * and adds '0' characters if there is room to fill in the precision size
- * before copying the src.
+ * Prepends the string "0x" (or "0X") to src if the alternative form flag
+ * is present, and adds '0' characters if there is room to fill in
+ * the precision size before copying the src.
  */
 static void	ft_insert_digits_ltr(char *dst, const char *src, t_spec *spec)
 {
@@ -117,8 +120,10 @@ static void	ft_insert_digits_ltr(char *dst, const char *src, t_spec *spec)
 
 	lead_signs = spec->precision - ft_strlen(src);
 	i = 0;
-	if (spec->alternative_form)
+	if (spec->alternative_form && spec->specifier == 'x')
 		i += ft_strlcpy(dst, "0x", 3);
+	else if (spec->alternative_form && spec->specifier == 'X')
+		i += ft_strlcpy(dst, "0X", 3);
 	ft_memset(dst + i, '0', lead_signs - i);
 	i = 0;
 	while (lead_signs + i < spec->precision)
@@ -130,9 +135,9 @@ static void	ft_insert_digits_ltr(char *dst, const char *src, t_spec *spec)
 
 /**
  * Copies the src string, from right to left, to the buffer pointed to by dst.
- * Prepends the string "0x" to src if the alternative form flag is present,
- * and adds '0' characters if there is room to fill in the precision size
- * before copying the src.
+ * Prepends the string "0x" (or "0X") to src if the alternative form flag
+ * is present, and adds '0' characters if there is room to fill in
+ * the precision size before copying the src.
  */
 static void	ft_insert_digits_rtl(char *dst, const char *src, t_spec *spec)
 {
@@ -143,8 +148,10 @@ static void	ft_insert_digits_rtl(char *dst, const char *src, t_spec *spec)
 	padding = spec->field_width - spec->precision;
 	lead_signs = spec->precision - ft_strlen(src);
 	i = 0;
-	if (spec->alternative_form)
-		i += ft_strlcpy(dst + padding, "0x", 3);
+	if (spec->alternative_form && spec->specifier == 'x')
+		i += ft_strlcpy(dst, "0x", 3);
+	else if (spec->alternative_form && spec->specifier == 'X')
+		i += ft_strlcpy(dst, "0X", 3);
 	while (i < lead_signs)
 	{
 		dst[padding + i] = '0';
