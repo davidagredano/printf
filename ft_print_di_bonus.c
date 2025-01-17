@@ -6,15 +6,15 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 17:18:30 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:32:45 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned	ft_validate_nbr(int n, t_spec *spec);
-static void		ft_validate_spec(char *conv, t_spec *spec);
-static char		*ft_get_base_str(t_spec *spec);
+static unsigned	int	ft_validate_nbr(int n, t_spec *spec);
+static void			ft_validate_spec(char *conv, t_spec *spec);
+static char			*ft_get_base_str(t_spec *spec);
 static void		ft_insert_conv(char *dst, const char *src, t_spec *spec);
 static void		ft_insert_conv_ltr(char *dst, const char *src, t_spec *spec);
 static void		ft_insert_conv_rtl(char *dst, const char *src, t_spec *spec);
@@ -30,10 +30,10 @@ static void		ft_insert_conv_rtl(char *dst, const char *src, t_spec *spec);
  */
 int	ft_print_di_bonus(int n, t_spec *spec)
 {
-	unsigned	u;
-	char		*str;
-	char		*conv;
-	int			chars_printed;
+	unsigned int	u;
+	char			*str;
+	char			*conv;
+	int				chars_printed;
 
 	u = ft_validate_nbr(n, spec);
 	if (n == 0 && spec->precision == 0)
@@ -60,9 +60,9 @@ int	ft_print_di_bonus(int n, t_spec *spec)
  * Converts the integer to an unsigned integer.
  * If it is negative, extracts the sign to the spec struct.
  */
-static unsigned	ft_validate_nbr(int n, t_spec *spec)
+static unsigned int	ft_validate_nbr(int n, t_spec *spec)
 {
-	unsigned u;
+	unsigned int	u;
 
 	if (n < 0)
 	{

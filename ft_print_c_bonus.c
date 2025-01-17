@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 19:02:46 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:28:03 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_print_c_bonus(int c, t_spec *spec)
 }
 
 /**
- * Ensures that NUL character won't be inserted at the beginning of the str if the
- * left align flag is present. That would print an empty string as a result.
+ * Ensures that NUL character won't be inserted at the beginning of the str if
+ * the left align flag is present. That would print an empty string as a result.
  * Ensures a minimum field width of 1 to copy the character.
  * Resets the rest of the unsupported flags.
  */

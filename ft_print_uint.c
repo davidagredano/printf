@@ -6,13 +6,13 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 17:00:12 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:41:16 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_uint(unsigned n, char specifier)
+int	ft_print_uint(unsigned int n, char specifier)
 {
 	char	*str;
 	int		chars_printed;
