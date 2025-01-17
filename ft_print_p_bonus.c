@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 12:48:07 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:46:17 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	ft_insert_digits_rtl(char *dst, const char *src, t_spec *spec);
 
 /**
  * The void * argument is converted to hexadecimal notation (as if by %#x).
+ * Flags admitted: zero padding, left justification, leading blank,
+ * leading sign, field width, precision.
  */
 int	ft_print_p_bonus(void *p, t_spec *spec)
 {
