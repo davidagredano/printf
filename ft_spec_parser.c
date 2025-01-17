@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:15:36 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/14 09:57:21 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:34:10 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_reset(t_spec *spec)
 	spec->zero_padding = false;
 	spec->left_align = false;
 	spec->leading_blank = false;
-	spec->leading_sign = false;
+	spec->leading_sign = '\0';
 	spec->field_width = 0;
 	spec->precision = -1;
 	spec->specifier = '\0';
@@ -71,7 +71,7 @@ static int	ft_parse_flags(const char *spec_str, t_spec *spec)
 		else if (spec_str[i] == ' ')
 			spec->leading_blank = true;
 		else if (spec_str[i] == '+')
-			spec->leading_sign = true;
+			spec->leading_sign = '+';
 		i++;
 	}
 	return (i);

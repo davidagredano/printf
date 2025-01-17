@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 10:46:17 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:44:44 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static void	ft_validate_spec(char *digits, t_spec *spec)
 	spec->alternative_form = true;
 	if (spec->left_align || spec->precision >= 0)
 		spec->zero_padding = false;
-	if (spec->leading_sign)
+	if (spec->leading_sign != '\0')
 		spec->leading_blank = false;
 	if (spec->precision < (int) ft_strlen(digits))
 		spec->precision = ft_strlen(digits);
-	if (spec->leading_sign || spec->leading_blank)
+	if (spec->leading_sign != '\0' || spec->leading_blank)
 		spec->precision += 1;
 	if (spec->alternative_form)
 		spec->precision += 2;
@@ -123,8 +123,8 @@ static void	ft_insert_digits_ltr(char *dst, const char *src, t_spec *spec)
 	i = 0;
 	if (spec->leading_blank)
 		dst[i++] = ' ';
-	if (spec->leading_sign)
-		dst[i++] = '+';
+	if (spec->leading_sign != '\0')
+		dst[i++] = spec->leading_sign;
 	if (spec->alternative_form)
 		i += ft_strlcpy(dst + i, "0x", 3);
 	ft_memset(dst + i, '0', lead_signs - i);
@@ -153,8 +153,8 @@ static void	ft_insert_digits_rtl(char *dst, const char *src, t_spec *spec)
 	i = 0;
 	if (spec->leading_blank)
 		dst[padding + i++] = ' ';
-	if (spec->leading_sign)
-		dst[padding + i++] = '+';
+	if (spec->leading_sign != '\0')
+		dst[i++] = spec->leading_sign;
 	if (spec->alternative_form)
 		i += ft_strlcpy(dst + padding + i, "0x", 3);
 	while (i < lead_signs)

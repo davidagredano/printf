@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 09:59:34 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:42:45 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,8 @@ static void	ft_validate_spec(char *digits, t_spec *spec)
 {
 	if (spec->left_align || spec->precision >= 0)
 		spec->zero_padding = false;
-	if (spec->leading_blank)
-		spec->leading_blank = false;
-	if (spec->leading_sign)
-		spec->leading_sign = false;
+	spec->leading_blank = false;
+	spec->leading_sign = '\0';
 	if (spec->precision < (int) ft_strlen(digits))
 		spec->precision = ft_strlen(digits);
 	if (spec->alternative_form)

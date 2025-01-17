@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/16 13:01:27 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:49:40 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_spec
 	bool	zero_padding;
 	bool	left_align;
 	bool	leading_blank;
-	bool	leading_sign;
+	char	leading_sign;
 	int		field_width;
 	int		precision;
 	char	specifier;
