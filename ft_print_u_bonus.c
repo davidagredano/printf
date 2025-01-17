@@ -6,42 +6,46 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:12:43 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 16:59:55 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:46:19 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_validate_spec(char *digits, t_spec *spec);
+static void	ft_validate_spec(char *conv, t_spec *spec);
 static char	*ft_get_base_str(t_spec *spec);
-static void	ft_insert_digits(char *dst, const char *src, t_spec *spec);
+static void	ft_insert_conv(char *dst, const char *src, t_spec *spec);
 
 /**
  * The unsigned int argument is converted to unsigned decimal notation.
  * The precision, if any, gives the minimum number of digits that must appear;
  * if the converted value requires fewer digits, it is padded on the left
  * with zeros.
+ * When 0 is printed with an explicit precision 0, the output is empty.
  * Flags admitted: zero padding, left justification, field width, precision.
  */
-int	ft_print_u_bonus(unsigned n, t_spec *spec)
+int	ft_print_u_bonus(unsigned int n, t_spec *spec)
 {
 	char	*str;
-	char	*digits;
+	char	*conv;
 	int		chars_printed;
 
-	digits = ft_uitoa(n, 10);
-	if (!digits)
+	if (n == 0 && spec->precision == 0)
+		conv = ft_strdup("");
+	else
+		conv = ft_uitoa(n, 10);
+	if (!conv)
 		return (0);
-	ft_validate_spec(digits, spec);
+	ft_validate_spec(conv, spec);
 	str = ft_get_base_str(spec);
 	if (!str)
 	{
-		free(digits);
+		free(conv);
 		return (0);
 	}
-	ft_insert_digits(str, digits, spec);
+	ft_insert_conv(str, conv, spec);
 	chars_printed = ft_putstr(str);
-	free(digits);
+	free(conv);
 	free(str);
 	return (chars_printed);
 }
@@ -50,12 +54,12 @@ int	ft_print_u_bonus(unsigned n, t_spec *spec)
  * Ignores '0' flag if left justification or precision is given.
  * Ensures a minimum precision and field width to avoid truncation.
  */
-static void	ft_validate_spec(char *digits, t_spec *spec)
+static void	ft_validate_spec(char *conv, t_spec *spec)
 {
 	if (spec->left_align || spec->precision >= 0)
 		spec->zero_padding = false;
-	if (spec->precision < (int) ft_strlen(digits))
-		spec->precision = ft_strlen(digits);
+	if (spec->precision < (int) ft_strlen(conv))
+		spec->precision = ft_strlen(conv);
 	if (spec->field_width < spec->precision)
 		spec->field_width = spec->precision;
 }
@@ -85,7 +89,7 @@ static char	*ft_get_base_str(t_spec *spec)
  * Adds zeros to the left of the converted value if there is room to fill in
  * the precision size.
  */
-static void	ft_insert_digits(char *dst, const char *src, t_spec *spec)
+static void	ft_insert_conv(char *dst, const char *src, t_spec *spec)
 {
 	int	i;
 	int	j;
