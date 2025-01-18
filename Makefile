@@ -33,7 +33,7 @@ $(NAME): $(LIBFT) $(OBJS)
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-%.o: %.c ft_printf.h Makefile
+%.o: %.c libftprintf.h Makefile
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean: mclean bclean lclean

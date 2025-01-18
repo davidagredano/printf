@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 19:47:22 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:43:57 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 static void	ft_validate_precision(const char *s, t_spec *spec);
 static void	ft_validate_field_width(t_spec *spec);

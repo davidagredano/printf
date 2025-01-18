@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 20:35:43 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:41:28 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
 # define CONVERSION_SPECIFIERS "cspdiuxX%"
 # define FLAGS "#0- +"
@@ -20,7 +20,6 @@
 # include <stdarg.h>
 # include <stdbool.h>
 
-// Conversion specification
 typedef struct s_spec
 {
 	bool	alternative_form;
@@ -33,7 +32,6 @@ typedef struct s_spec
 	char	specifier;
 }		t_spec;
 
-// Specification parser
 bool	ft_isvalid(const char *spec_str);
 int		ft_parse(const char *spec_str, t_spec *spec);
 

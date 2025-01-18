@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/13 14:24:46 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:43:08 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 int	ft_print_c(int c)
 {

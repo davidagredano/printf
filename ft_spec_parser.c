@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 20:15:36 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 10:34:10 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:44:28 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
 static void	ft_reset(t_spec *spec);
 static int	ft_parse_flags(const char *spec_str, t_spec *spec);

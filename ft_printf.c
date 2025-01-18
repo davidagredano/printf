@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 19:03:05 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:44:17 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h" 
+#include "libftprintf.h"
 
 static bool	ft_isvalid_char(char specifier);
 static int	ft_print_format(char specifier, va_list ap);
