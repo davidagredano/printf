@@ -45,7 +45,7 @@ re:	fclean all
 
 bonus: $(LIBFT) $(OBJS_BONUS)
 	cp $(LIBFT) $(NAME)
-	$(CLIB) $(NAME) $^
+	$(CLIB) $(NAME) $(OBJS_BONUS)
 	make mclean
 	@touch bonus
 
