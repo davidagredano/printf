@@ -1,5 +1,5 @@
 SRCS = ft_printf.c ft_print_c.c ft_print_s.c ft_print_p.c ft_print_di.c \
-       ft_print_uint.c ft_print_percent.c
+       ft_print_uint.c
 
 OBJS = $(SRCS:.c=.o)
 
