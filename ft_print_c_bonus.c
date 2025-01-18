@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 20:28:03 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:43:06 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ int	ft_print_c_bonus(int c, t_spec *spec)
 	ft_validate_spec(c, spec);
 	str = ft_get_base_str(spec);
 	if (!str)
-		return (0);
+		return (-1);
 	ft_insert_char(c, str, spec);
-	ft_putstr(str);
+	if (ft_putstr(str) == -1)
+	{
+		free(str);
+		return (-1);
+	}
 	free(str);
 	return (spec->field_width);
 }

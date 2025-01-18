@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 15:58:31 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:47:22 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_print_s_bonus(const char *s, t_spec *spec)
 	ft_validate_field_width(spec);
 	str = ft_get_base_str(spec);
 	if (!str)
-		return (0);
+		return (-1);
 	ft_insert_str(str, s, spec);
 	chars_printed = ft_putstr(str);
 	free(str);

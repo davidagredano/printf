@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 20:32:45 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:48:32 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	ft_print_di_bonus(int n, t_spec *spec)
 	else
 		conv = ft_uitoa(u, 10);
 	if (!conv)
-		return (0);
+		return (-1);
 	ft_validate_spec(conv, spec);
 	str = ft_get_base_str(spec);
 	if (!str)
 	{
 		free(conv);
-		return (0);
+		return (-1);
 	}
 	ft_insert_conv(str, conv, spec);
 	chars_printed = ft_putstr(str);
