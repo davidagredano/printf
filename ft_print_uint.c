@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 20:41:16 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:39:27 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_print_uint(unsigned int n, char specifier)
 	else
 		str = ft_uitoa(n, 10);
 	if (!str)
-		return (0);
+		return (-1);
 	chars_printed = ft_putstr(str);
 	free(str);
 	return (chars_printed);

@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/17 17:00:41 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:03:05 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_printf(char const *str, ...)
 	va_list	ap;
 	size_t	i;
 	int		chars_printed;
+	int		print_return;
 
 	va_start(ap, str);
 	chars_printed = 0;
@@ -27,15 +28,15 @@ int	ft_printf(char const *str, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%' && ft_isvalid_char(str[i + 1]))
-		{
-			i++;
-			chars_printed += ft_print_format(str[i], ap);
-		}
+			print_return = ft_print_format(str[++i], ap);
 		else
+			print_return = ft_putchar(str[i]);
+		if (print_return == -1)
 		{
-			ft_putchar_fd(str[i], STDOUT_FILENO);
-			chars_printed++;
+			va_end(ap);
+			return (-1);
 		}
+		chars_printed += print_return;
 		i++;
 	}
 	va_end(ap);
