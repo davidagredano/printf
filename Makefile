@@ -49,10 +49,6 @@ bonus: $(LIBFT) $(OBJS_BONUS)
 	make mclean
 	@touch bonus
 
-debug: $(LIBFT)
-	cc main.c $(SRCS_BONUS) -Llibft -lft -o debug -g
-	make mclean
-
 mclean:
 	$(RM) $(OBJS)
 
