@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/14 20:16:07 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/18 15:58:31 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	ft_print_s_bonus(const char *s, t_spec *spec)
 	char	*str;
 	int		chars_printed;
 
-	if (!s)
+	if (!s && spec->precision > -1 && spec->precision < 6)
+		s = "";
+	else if (!s)
 		s = "(null)";
 	ft_validate_precision(s, spec);
 	ft_validate_field_width(spec);
