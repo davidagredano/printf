@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 20:43:26 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:22:22 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static unsigned	int	ft_validate_nbr(int n, t_spec *spec);
 static void			ft_validate_spec(char *conv, t_spec *spec);
-static char			*ft_get_base_str(t_spec *spec);
 static void		ft_insert_conv(char *dst, const char *src, t_spec *spec);
 static void		ft_insert_conv_ltr(char *dst, const char *src, t_spec *spec);
 static void		ft_insert_conv_rtl(char *dst, const char *src, t_spec *spec);
@@ -98,20 +97,6 @@ static void	ft_validate_spec(char *conv, t_spec *spec)
 		spec->field_width = spec->precision;
 	if (spec->zero_padding)
 		spec->precision = spec->field_width;
-}
-
-static char	*ft_get_base_str(t_spec *spec)
-{
-	char	*str;
-
-	str = ft_calloc(spec->field_width + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (spec->zero_padding)
-		ft_memset(str, '0', spec->field_width);
-	else
-		ft_memset(str, ' ', spec->field_width);
-	return (str);
 }
 
 static void	ft_insert_conv(char *dst, const char *src, t_spec *spec)

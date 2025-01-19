@@ -6,14 +6,13 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:49:45 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 20:43:14 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:22:06 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 static void	ft_validate_spec(int c, t_spec *spec);
-static char	*ft_get_base_str(t_spec *spec);
 static void	ft_insert_char(int c, char *str, t_spec *spec);
 
 /**
@@ -56,20 +55,6 @@ static void	ft_validate_spec(int c, t_spec *spec)
 	if (spec->field_width < 1)
 		spec->field_width = 1;
 	spec->precision = -1;
-}
-
-static char	*ft_get_base_str(t_spec *spec)
-{
-	char	*str;
-
-	str = ft_calloc(spec->field_width + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (spec->zero_padding)
-		ft_memset(str, '0', spec->field_width);
-	else
-		ft_memset(str, ' ', spec->field_width);
-	return (str);
 }
 
 /**

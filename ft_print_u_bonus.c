@@ -6,14 +6,13 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:12:43 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 20:44:02 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:24:01 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
 static void	ft_validate_spec(char *conv, t_spec *spec);
-static char	*ft_get_base_str(t_spec *spec);
 static void	ft_insert_conv(char *dst, const char *src, t_spec *spec);
 
 /**
@@ -62,26 +61,6 @@ static void	ft_validate_spec(char *conv, t_spec *spec)
 		spec->precision = ft_strlen(conv);
 	if (spec->field_width < spec->precision)
 		spec->field_width = spec->precision;
-}
-
-/**
- * Allocates a string of the appropriate size.
- * Initializes all characters except for the terminating NUL character to ' ',
- * or '0' if the zero_padding flag is present.
- * Returns a pointer to the allocated string, or NULL if allocation fails.
- */
-static char	*ft_get_base_str(t_spec *spec)
-{
-	char	*str;
-
-	str = ft_calloc(spec->field_width + 1, sizeof(char));
-	if (!str)
-		return (NULL);
-	if (spec->zero_padding)
-		ft_memset(str, '0', spec->field_width);
-	else
-		ft_memset(str, ' ', spec->field_width);
-	return (str);
 }
 
 /**
