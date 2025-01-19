@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:14:15 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/18 20:48:22 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:43:02 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static bool	ft_isvalid_char(char specifier)
 static int	ft_print_format(char specifier, va_list ap)
 {
 	if (specifier == 'c')
-		return (ft_print_c(va_arg(ap, int)));
+		return (ft_putchar(va_arg(ap, int)));
 	else if (specifier == 's')
 		return (ft_print_s(va_arg(ap, const char *)));
 	else if (specifier == 'p')
@@ -63,6 +63,6 @@ static int	ft_print_format(char specifier, va_list ap)
 	else if (ft_strchr("uxX", specifier))
 		return (ft_print_uint(va_arg(ap, unsigned), specifier));
 	else if (specifier == '%')
-		return (ft_print_c('%'));
+		return (ft_putchar('%'));
 	return (0);
 }
