@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 02:10:27 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:09:34 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static unsigned	int	ft_validate_nbr(int n, t_spec *spec);
 static void			ft_validate_spec(char *conv, t_spec *spec);

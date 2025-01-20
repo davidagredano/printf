@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 01:40:10 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:06:12 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_validate_spec(const char *s, t_spec *spec);
 static void	ft_insert_str(char *dst, const char *src, t_spec *spec);

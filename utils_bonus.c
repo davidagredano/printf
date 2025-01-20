@@ -6,11 +6,11 @@
 /*   By: dagredan <dagredan@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 00:18:13 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 01:36:12 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:06:41 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	ft_insert_conv_ltr(char *dst, const char *src, t_spec *spec);
 static void	ft_insert_conv_rtl(char *dst, const char *src, t_spec *spec);
