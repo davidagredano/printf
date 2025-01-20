@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:18:11 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 00:20:12 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:40:10 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	ft_validate_spec(const char *s, t_spec *spec)
 		spec->precision = ft_strnlen(s, spec->precision);
 	else
 		spec->precision = ft_strlen(s);
-
 	if (spec->field_width < spec->precision)
 		spec->field_width = spec->precision;
 }
