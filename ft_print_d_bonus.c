@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_di_bonus.c                                :+:      :+:    :+:   */
+/*   ft_print_d_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 09:36:00 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 01:32:17 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 02:10:27 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			ft_validate_spec(char *conv, t_spec *spec);
  * Flags admitted: zero padding, left justification, leading blank, 
  * leading sign, field width, precision.
  */
-int	ft_print_di_bonus(int n, t_spec *spec)
+int	ft_print_d_bonus(int n, t_spec *spec)
 {
 	unsigned int	u;
 	char			*str;

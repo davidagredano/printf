@@ -6,7 +6,7 @@
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:39:52 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 02:05:07 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/01/20 02:11:27 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	ft_insert_conv(char *dst, const char *src, t_spec *spec);
 int		ft_print_c_bonus(int c, t_spec *spec);
 int		ft_print_s_bonus(const char *s, t_spec *spec);
 int		ft_print_p_bonus(void *p, t_spec *spec);
-int		ft_print_di_bonus(int n, t_spec *spec);
+int		ft_print_d_bonus(int n, t_spec *spec);
 int		ft_print_u_bonus(unsigned n, t_spec *spec);
 int		ft_print_x_bonus(unsigned n, t_spec *spec);
-int		ft_print_percent_bonus(void);
 
 #endif

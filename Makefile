@@ -2,9 +2,9 @@ SRCS = printf.c print_conversions.c
 
 OBJS = $(SRCS:.c=.o)
 
-SRCS_BONUS = ft_printf_bonus.c ft_print_c_bonus.c ft_print_s_bonus.c \
-             ft_print_p_bonus.c ft_print_di_bonus.c ft_print_u_bonus.c \
-             ft_print_x_bonus.c ft_spec_parser.c print_format_utils.c
+SRCS_BONUS = printf_bonus.c spec_parser_bonus.c ft_print_c_bonus.c \
+             ft_print_s_bonus.c ft_print_p_bonus.c ft_print_d_bonus.c \
+             ft_print_u_bonus.c ft_print_x_bonus.c utils_bonus.c
 
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
