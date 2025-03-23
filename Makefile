@@ -49,6 +49,6 @@ clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT_DIR)/$(LIBFT)
+	$(RM) $(NAME) $(LIBFT)
 
 re:	fclean all
