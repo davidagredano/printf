@@ -1,49 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_p_bonus.c                                 :+:      :+:    :+:   */
+/*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 11:06:04 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/03/23 13:41:07 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-static void	ft_validate_spec(char *digits, t_spec *spec);
-
-/**
- * The void * argument is converted to hexadecimal notation (as if by %#x).
- * Flags admitted: zero padding, left justification, leading blank,
- * leading sign, field width, precision.
- */
-int	ft_print_p_bonus(void *p, t_spec *spec)
-{
-	char	*str;
-	char	*conv;
-	int		chars_printed;
-
-	if (!p)
-		conv = ft_strdup("(nil)");
-	else
-		conv = ft_ultoa((unsigned long) p, 16);
-	if (!conv)
-		return (-1);
-	ft_validate_spec(conv, spec);
-	str = ft_get_base_str(spec);
-	if (!str)
-	{
-		free(conv);
-		return (-1);
-	}
-	ft_insert_conv(str, conv, spec);
-	chars_printed = ft_putstr(str);
-	free(conv);
-	free(str);
-	return (chars_printed);
-}
+#include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 
 /**
  * Ensures alternative form flag.
@@ -55,7 +23,7 @@ int	ft_print_p_bonus(void *p, t_spec *spec)
  * Finally, if the zero padding flag is still on, expands the precision
  * to the full field width to make room for the zeros.
  */
-static void	ft_validate_spec(char *conv, t_spec *spec)
+static void	validate_spec(char *conv, t_spec *spec)
 {
 	spec->alternative_form = true;
 	if (ft_strncmp(conv, "(nil)", 6) == 0)
@@ -80,4 +48,35 @@ static void	ft_validate_spec(char *conv, t_spec *spec)
 		spec->field_width = spec->precision;
 	if (spec->zero_padding)
 		spec->precision = spec->field_width;
+}
+
+/**
+ * The void * argument is converted to hexadecimal notation (as if by %#x).
+ * Flags admitted: zero padding, left justification, leading blank,
+ * leading sign, field width, precision.
+ */
+int	print_p(void *p, t_spec *spec)
+{
+	char	*str;
+	char	*conv;
+	int		chars_printed;
+
+	if (!p)
+		conv = ft_strdup("(nil)");
+	else
+		conv = ft_ultoa((unsigned long) p, 16);
+	if (!conv)
+		return (-1);
+	validate_spec(conv, spec);
+	str = get_base_str(spec);
+	if (!str)
+	{
+		free(conv);
+		return (-1);
+	}
+	insert_conv(str, conv, spec);
+	chars_printed = ft_putstr(str);
+	free(conv);
+	free(str);
+	return (chars_printed);
 }

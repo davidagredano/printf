@@ -1,57 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_x_bonus.c                                 :+:      :+:    :+:   */
+/*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dagredan <dagredan@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:59:51 by dagredan          #+#    #+#             */
-/*   Updated: 2025/01/20 11:06:23 by dagredan         ###   ########.fr       */
+/*   Updated: 2025/03/23 13:41:18 by dagredan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-static void	ft_validate_spec(char *conv, t_spec *spec);
-
-/**
- * The unsigned int argument is converted to unsigned hexadecimal notation.
- * The letters abcdef are used for 'x' conversions;
- * the letters ABCDEF are used for 'X' conversions.
- * The precision, if any, gives the minimum number of digits that must appear;
- * if the converted value requires fewer digits, it is padded on the left
- * with zeros.
- * When 0 is printed with an explicit precision 0, the output is empty.
- * Flags admitted: alternative form, zero padding, left justification,
- * field width, precision.
- */
-int	ft_print_x_bonus(unsigned n, t_spec *spec)
-{
-	char	*str;
-	char	*conv;
-	int		chars_printed;
-
-	if (n == 0 && spec->precision == 0)
-		conv = ft_strdup("");
-	else if (spec->specifier == 'x')
-		conv = ft_uitoa(n, 16);
-	else
-		conv = ft_uitoa_caps(n, 16);
-	if (!conv)
-		return (-1);
-	ft_validate_spec(conv, spec);
-	str = ft_get_base_str(spec);
-	if (!str)
-	{
-		free(conv);
-		return (-1);
-	}
-	ft_insert_conv(str, conv, spec);
-	chars_printed = ft_putstr(str);
-	free(conv);
-	free(str);
-	return (chars_printed);
-}
+#include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 
 /**
  * Ignores '#' if the conversion is "0" or "", which means that the input was 0.
@@ -60,7 +20,7 @@ int	ft_print_x_bonus(unsigned n, t_spec *spec)
  * Ensures a minimum precision and field width to avoid truncation,
  * adding extra space if '#' flag is present.
  */
-static void	ft_validate_spec(char *conv, t_spec *spec)
+static void	validate_spec(char *conv, t_spec *spec)
 {
 	if (ft_strncmp(conv, "0", 2) == 0 || ft_strncmp(conv, "", 1) == 0)
 		spec->alternative_form = false;
@@ -74,4 +34,43 @@ static void	ft_validate_spec(char *conv, t_spec *spec)
 		spec->precision += 2;
 	if (spec->field_width < spec->precision)
 		spec->field_width = spec->precision;
+}
+
+/**
+ * The unsigned int argument is converted to unsigned hexadecimal notation.
+ * The letters abcdef are used for 'x' conversions;
+ * the letters ABCDEF are used for 'X' conversions.
+ * The precision, if any, gives the minimum number of digits that must appear;
+ * if the converted value requires fewer digits, it is padded on the left
+ * with zeros.
+ * When 0 is printed with an explicit precision 0, the output is empty.
+ * Flags admitted: alternative form, zero padding, left justification,
+ * field width, precision.
+ */
+int	print_x(unsigned n, t_spec *spec)
+{
+	char	*str;
+	char	*conv;
+	int		chars_printed;
+
+	if (n == 0 && spec->precision == 0)
+		conv = ft_strdup("");
+	else if (spec->specifier == 'x')
+		conv = ft_uitoa(n, 16);
+	else
+		conv = ft_uitoa_caps(n, 16);
+	if (!conv)
+		return (-1);
+	validate_spec(conv, spec);
+	str = get_base_str(spec);
+	if (!str)
+	{
+		free(conv);
+		return (-1);
+	}
+	insert_conv(str, conv, spec);
+	chars_printed = ft_putstr(str);
+	free(conv);
+	free(str);
+	return (chars_printed);
 }
